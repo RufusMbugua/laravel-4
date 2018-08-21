@@ -32,9 +32,6 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"  \
 # Install Composer Packages
 RUN composer self-update
 
-RUN cp .env.example.php .env.local.php	\
-	&&	php artisan key:generate
-
 VOLUME ["/var/www/html"]
 
 WORKDIR /var/www/html

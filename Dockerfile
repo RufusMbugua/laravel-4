@@ -2,8 +2,8 @@ FROM php:7.2-apache
 
 LABEL Rufus Mbugua - https://github.com/rufusmbugua
 
-# If you want to use the image to deploy your source code
-COPY . /var/www/html/
+# If you want to use the image to deploy your source code uncomment the next line
+# COPY . /var/www/html/
 COPY ./docker/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 # Prepare MySQL
@@ -32,7 +32,6 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"  \
 # Install Composer Packages
 RUN composer self-update
 
-RUN  chmod -R 777 ./app/storage
 RUN cp .env.example.php .env.local.php	\
 	&&	php artisan key:generate
 
